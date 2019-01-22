@@ -2,8 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as http from 'http';
-import { url } from 'inspector';
 import { URL } from 'url';
+
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -32,13 +32,13 @@ export function activate(context: vscode.ExtensionContext) {
 	let request = vscode.commands.registerCommand('proxysupporttest.getRequest', () => {
 		// The code you place here will be executed every time your command is executed
 		
-		http.get("127.0.0.1:8080", (res) => {
+		http.get(new URL("http://127.0.0.1:8080?platform=android"), (res) => {
             let responseString = "";
             res.on("data", (data: Buffer) => {
                 responseString += data.toString();
 			});
 			res.on("end", () => {
-                if (res.statusCode == 200) {
+                if (res.statusCode === 200) {
                     vscode.window.showInformationMessage(responseString);
                 } else {
                     vscode.window.showInformationMessage("Error");
