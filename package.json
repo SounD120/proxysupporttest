@@ -18,11 +18,11 @@
 		"commands": [
 			{
 				"command": "proxysupporttest.startServer",
-				"title": "Start test HTTP server"
+				"title": "Proxy Support Test: Start test HTTP server"
 			},
 			{
 				"command": "proxysupporttest.getRequest",
-				"title": "Sends HTTP request to server"
+				"title": "Proxy Support Test: Send HTTP request to server"
 			}
 		]
 	},
