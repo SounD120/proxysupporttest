@@ -50,8 +50,15 @@ export function activate(context: vscode.ExtensionContext) {
 		
 		
 	});
+
+	const outputChannel: vscode.OutputChannel = vscode.window.createOutputChannel("Extension: Logs");
+	let sendMessageOutput = vscode.commands.registerCommand('proxysupporttest.sendMessageOutput', () => {
+		outputChannel.appendLine("Logging Data");
+	});
+	
 	context.subscriptions.push(server);
 	context.subscriptions.push(request);
+	context.subscriptions.push(sendMessageOutput);
 }
 
 // this method is called when your extension is deactivated
